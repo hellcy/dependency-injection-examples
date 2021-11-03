@@ -3,7 +3,7 @@ package com.yuancheng.dependencyinjectionexamples.services;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-@Profile("CN")
+@Profile({"CN", "default"})
 @Service("i18nService")
 public class I18NChineseGreetingService implements GreetingService{
   @Override
