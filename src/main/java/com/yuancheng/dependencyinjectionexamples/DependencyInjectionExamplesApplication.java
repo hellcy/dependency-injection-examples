@@ -1,9 +1,6 @@
 package com.yuancheng.dependencyinjectionexamples;
 
-import com.yuancheng.dependencyinjectionexamples.controllers.ConstructorInjectedController;
-import com.yuancheng.dependencyinjectionexamples.controllers.MyController;
-import com.yuancheng.dependencyinjectionexamples.controllers.PropertyInjectedController;
-import com.yuancheng.dependencyinjectionexamples.controllers.SetterInjectedController;
+import com.yuancheng.dependencyinjectionexamples.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -42,6 +39,10 @@ public class DependencyInjectionExamplesApplication {
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 
 		System.out.println(constructorInjectedController.getGreeting());
+
+		System.out.println("---- Spring Profile");
+		I18NController i18NController = (I18NController) ctx.getBean("i18NController");
+		System.out.println(i18NController.sayHello());
  	}
 
 }
