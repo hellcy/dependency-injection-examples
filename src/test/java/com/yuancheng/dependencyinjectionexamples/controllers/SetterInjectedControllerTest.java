@@ -1,10 +1,8 @@
 package com.yuancheng.dependencyinjectionexamples.controllers;
 
-import com.yuancheng.dependencyinjectionexamples.services.GreetingServiceImpl;
+import com.yuancheng.dependencyinjectionexamples.services.PropertyInjectedGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SetterInjectedControllerTest {
 
@@ -13,7 +11,7 @@ class SetterInjectedControllerTest {
   @BeforeEach
   void setUp() {
     setterInjectedController = new SetterInjectedController();
-    setterInjectedController.setGreetingService(new GreetingServiceImpl());
+    setterInjectedController.setGreetingService(new PropertyInjectedGreetingService());
   }
 
   @Test
