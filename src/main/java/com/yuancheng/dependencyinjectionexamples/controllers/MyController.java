@@ -1,13 +1,18 @@
 package com.yuancheng.dependencyinjectionexamples.controllers;
 
+import com.yuancheng.dependencyinjectionexamples.services.PrimaryInjectedGreetingService;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController {
 
-    public String sayHello() {
-        System.out.println("Hello World!");
+    private final PrimaryInjectedGreetingService primaryInjectedGreetingService;
 
-        return "Hello from MyController";
+    public MyController(PrimaryInjectedGreetingService primaryInjectedGreetingService) {
+        this.primaryInjectedGreetingService = primaryInjectedGreetingService;
+    }
+
+    public String sayHello() {
+        return primaryInjectedGreetingService.sayGreeting();
     }
 }

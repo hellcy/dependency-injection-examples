@@ -19,10 +19,11 @@ public class DependencyInjectionExamplesApplication {
 			This is the idea of IoC (inversion of control)
 		 */
 		ApplicationContext ctx = SpringApplication.run(DependencyInjectionExamplesApplication.class, args);
+
+		System.out.println("---- Primary");
 		MyController myController = (MyController) ctx.getBean("myController");
 
-		String greeting = myController.sayHello();
-		System.out.println(greeting);
+		System.out.println(myController.sayHello());
 
 		System.out.println("---- Property");
 
