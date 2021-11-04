@@ -3,10 +3,17 @@ package com.yuancheng.dependencyinjectionexamples.config;
 import com.yuancheng.dependencyinjectionexamples.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
 public class GreetingServiceConfig {
+
+  @Bean
+  @Primary
+  PrimaryInjectedGreetingService primaryInjectedGreetingService() {
+    return new PrimaryInjectedGreetingService();
+  }
 
   @Bean
   ConstructorInjectedGreetingService constructorInjectedGreetingService() {
