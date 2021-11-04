@@ -1,10 +1,9 @@
 package com.yuancheng.dependencyinjectionexamples.config;
 
-import com.yuancheng.dependencyinjectionexamples.services.ConstructorInjectedGreetingService;
-import com.yuancheng.dependencyinjectionexamples.services.PropertyInjectedGreetingService;
-import com.yuancheng.dependencyinjectionexamples.services.SetterInjectedGreetingService;
+import com.yuancheng.dependencyinjectionexamples.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
 public class GreetingServiceConfig {
@@ -22,5 +21,17 @@ public class GreetingServiceConfig {
   @Bean
   SetterInjectedGreetingService setterInjectedGreetingService() {
     return new SetterInjectedGreetingService();
+  }
+
+  @Bean("i18nService")
+  @Profile({"CN", "default"})
+  I18NChineseGreetingService i18NChineseGreetingService() {
+    return new I18NChineseGreetingService();
+  }
+
+  @Bean("i18nService")
+  @Profile("EN")
+  I18NEnglishGreetingService i18NEnglishGreetingService() {
+    return new I18NEnglishGreetingService();
   }
 }
