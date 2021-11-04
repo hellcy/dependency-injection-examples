@@ -1,5 +1,7 @@
 package com.yuancheng.dependencyinjectionexamples.config;
 
+import com.yuancheng.dependencyinjectionexamples.repositories.EnglishGreetingRepository;
+import com.yuancheng.dependencyinjectionexamples.repositories.EnglishGreetingRepositoryImpl;
 import com.yuancheng.dependencyinjectionexamples.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,9 +38,14 @@ public class GreetingServiceConfig {
     return new I18NChineseGreetingService();
   }
 
+  @Bean
+  EnglishGreetingRepository englishGreetingRepository() {
+    return new EnglishGreetingRepositoryImpl();
+  }
+
   @Bean("i18nService")
   @Profile("EN")
-  I18NEnglishGreetingService i18NEnglishGreetingService() {
-    return new I18NEnglishGreetingService();
+  I18NEnglishGreetingService i18NEnglishGreetingService(EnglishGreetingRepository englishGreetingRepository) {
+    return new I18NEnglishGreetingService(englishGreetingRepository);
   }
 }
