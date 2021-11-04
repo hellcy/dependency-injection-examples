@@ -4,7 +4,9 @@ import com.yuancheng.dependencyinjectionexamples.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+@ComponentScan(basePackages = {"com.yuancheng.dependencyinjectionexamples", "com.yuancheng.pets"})
 @SpringBootApplication
 public class DependencyInjectionExamplesApplication {
 
@@ -43,6 +45,12 @@ public class DependencyInjectionExamplesApplication {
 		System.out.println("---- Spring Profile");
 		I18NController i18NController = (I18NController) ctx.getBean("i18NController");
 		System.out.println(i18NController.sayHello());
+
+		System.out.println("---- Pet Service");
+
+		PetController petController = (PetController) ctx.getBean("petController");
+
+		System.out.println(petController.getPetService());
  	}
 
 }
