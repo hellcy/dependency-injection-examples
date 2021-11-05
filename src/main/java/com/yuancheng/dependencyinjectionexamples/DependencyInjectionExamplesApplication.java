@@ -1,6 +1,8 @@
 package com.yuancheng.dependencyinjectionexamples;
 
 import com.yuancheng.dependencyinjectionexamples.controllers.*;
+import com.yuancheng.dependencyinjectionexamples.services.PrototypeBean;
+import com.yuancheng.dependencyinjectionexamples.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -50,6 +52,17 @@ public class DependencyInjectionExamplesApplication {
 		PetController petController = (PetController) ctx.getBean("petController");
 
 		System.out.println(petController.getPetService());
+
+		System.out.println("---- Bean Scopes -----");
+		SingletonBean singletonBean1 = ctx.getBean(SingletonBean.class);
+		System.out.println(singletonBean1.getScope());
+		SingletonBean singletonBean2 = ctx.getBean(SingletonBean.class);
+		System.out.println(singletonBean2.getScope());
+
+		PrototypeBean prototypeBean1 = ctx.getBean(PrototypeBean.class);
+		System.out.println(prototypeBean1.getScope());
+		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
+		System.out.println(prototypeBean2.getScope());
  	}
 
 }
