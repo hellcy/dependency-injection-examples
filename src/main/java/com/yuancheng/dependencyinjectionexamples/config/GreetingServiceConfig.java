@@ -7,12 +7,10 @@ import com.yuancheng.pets.CatPetService;
 import com.yuancheng.pets.DogPetService;
 import com.yuancheng.pets.PetService;
 import com.yuancheng.pets.PetServiceFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 
 @Configuration
+@ImportResource("classpath:di-config.xml")
 public class GreetingServiceConfig {
 
   @Bean
@@ -21,7 +19,7 @@ public class GreetingServiceConfig {
     return new PrimaryInjectedGreetingService();
   }
 
-  @Bean
+  //@Bean
   ConstructorInjectedGreetingService constructorInjectedGreetingService() {
     return new ConstructorInjectedGreetingService();
   }
