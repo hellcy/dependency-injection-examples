@@ -3,6 +3,10 @@ package com.yuancheng.dependencyinjectionexamples.config;
 import com.yuancheng.dependencyinjectionexamples.repositories.EnglishGreetingRepository;
 import com.yuancheng.dependencyinjectionexamples.repositories.EnglishGreetingRepositoryImpl;
 import com.yuancheng.dependencyinjectionexamples.services.*;
+import com.yuancheng.pets.CatPetService;
+import com.yuancheng.pets.DogPetService;
+import com.yuancheng.pets.PetService;
+import com.yuancheng.pets.PetServiceFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -47,5 +51,22 @@ public class GreetingServiceConfig {
   @Profile("EN")
   I18NEnglishGreetingService i18NEnglishGreetingService(EnglishGreetingRepository englishGreetingRepository) {
     return new I18NEnglishGreetingService(englishGreetingRepository);
+  }
+
+  @Bean
+  PetServiceFactory petServiceFactory() {
+    return new PetServiceFactory();
+  }
+
+  @Bean("petService")
+  @Profile({"dog", "default"})
+  PetService dogPetService(PetServiceFactory petServiceFactory) {
+    return petServiceFactory.getPetService("dog");
+  }
+
+  @Bean("petService")
+  @Profile("cat")
+  PetService catPetService(PetServiceFactory petServiceFactory) {
+    return petServiceFactory.getPetService("cat");
   }
 }
