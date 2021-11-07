@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dog, EN, dev
+    active: dog, EN, qa
 yuan:
   username: sampleUsername
   password: samplePassword
