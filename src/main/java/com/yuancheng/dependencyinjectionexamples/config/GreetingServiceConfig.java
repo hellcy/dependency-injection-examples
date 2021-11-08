@@ -71,13 +71,11 @@ public class GreetingServiceConfig {
   }
 
   @Bean
-  FakeDatasource fakeDatasource(@Value("${yuan.username}") String username,
-                                @Value("${yuan.password}") String password,
-                                @Value("${yuan.jdbcUrl}") String jdbcUrl) {
+  FakeDatasource fakeDatasource(YuanConfiguration yuanConfiguration) {
     FakeDatasource fakeDatasource = new FakeDatasource();
-    fakeDatasource.setUsername(username);
-    fakeDatasource.setPassword(password);
-    fakeDatasource.setJdbcUrl(jdbcUrl);
+    fakeDatasource.setUsername(yuanConfiguration.getUsername());
+    fakeDatasource.setPassword(yuanConfiguration.getPassword());
+    fakeDatasource.setJdbcUrl(yuanConfiguration.getJdbcUrl());
 
     return fakeDatasource;
   }

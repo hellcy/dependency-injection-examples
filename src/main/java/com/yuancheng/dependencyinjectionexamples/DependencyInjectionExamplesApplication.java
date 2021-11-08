@@ -1,5 +1,6 @@
 package com.yuancheng.dependencyinjectionexamples;
 
+import com.yuancheng.dependencyinjectionexamples.config.YuanConfiguration;
 import com.yuancheng.dependencyinjectionexamples.controllers.*;
 import com.yuancheng.dependencyinjectionexamples.datasources.FakeDatasource;
 import com.yuancheng.dependencyinjectionexamples.services.PrototypeBean;
@@ -71,6 +72,12 @@ public class DependencyInjectionExamplesApplication {
 		System.out.println(fakeDatasource.getUsername());
 		System.out.println(fakeDatasource.getPassword());
 		System.out.println(fakeDatasource.getJdbcUrl());
+
+		System.out.println("------- Config Props Bean -----");
+		YuanConfiguration yuanConfiguration = ctx.getBean(YuanConfiguration.class);
+		System.out.println(yuanConfiguration.getUsername());
+		System.out.println(yuanConfiguration.getPassword());
+		System.out.println(yuanConfiguration.getJdbcUrl());
  	}
 
 }
