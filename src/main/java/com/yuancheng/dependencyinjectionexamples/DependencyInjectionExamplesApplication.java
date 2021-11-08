@@ -1,6 +1,7 @@
 package com.yuancheng.dependencyinjectionexamples;
 
 import com.yuancheng.dependencyinjectionexamples.config.YuanConfiguration;
+import com.yuancheng.dependencyinjectionexamples.config.YuanConstructorConfiguration;
 import com.yuancheng.dependencyinjectionexamples.controllers.*;
 import com.yuancheng.dependencyinjectionexamples.datasources.FakeDatasource;
 import com.yuancheng.dependencyinjectionexamples.services.PrototypeBean;
@@ -78,6 +79,12 @@ public class DependencyInjectionExamplesApplication {
 		System.out.println(yuanConfiguration.getUsername());
 		System.out.println(yuanConfiguration.getPassword());
 		System.out.println(yuanConfiguration.getJdbcUrl());
+
+		System.out.println("-------- Constructor Properties Binding -------");
+		YuanConstructorConfiguration yuanConstructorConfiguration = ctx.getBean(YuanConstructorConfiguration.class);
+		System.out.println(yuanConstructorConfiguration.getUsername());
+		System.out.println(yuanConstructorConfiguration.getPassword());
+		System.out.println(yuanConstructorConfiguration.getJdbcUrl());
  	}
 
 }

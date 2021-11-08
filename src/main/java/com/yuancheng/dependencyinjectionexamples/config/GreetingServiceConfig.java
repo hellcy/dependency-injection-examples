@@ -9,10 +9,12 @@ import com.yuancheng.pets.DogPetService;
 import com.yuancheng.pets.PetService;
 import com.yuancheng.pets.PetServiceFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
 @Configuration
 @ImportResource("classpath:di-config.xml")
+@EnableConfigurationProperties(YuanConstructorConfiguration.class)
 public class GreetingServiceConfig {
 
   @Bean
@@ -71,11 +73,11 @@ public class GreetingServiceConfig {
   }
 
   @Bean
-  FakeDatasource fakeDatasource(YuanConfiguration yuanConfiguration) {
+  FakeDatasource fakeDatasource(YuanConstructorConfiguration yuanConstructorConfiguration) {
     FakeDatasource fakeDatasource = new FakeDatasource();
-    fakeDatasource.setUsername(yuanConfiguration.getUsername());
-    fakeDatasource.setPassword(yuanConfiguration.getPassword());
-    fakeDatasource.setJdbcUrl(yuanConfiguration.getJdbcUrl());
+    fakeDatasource.setUsername(yuanConstructorConfiguration.getUsername());
+    fakeDatasource.setPassword(yuanConstructorConfiguration.getPassword());
+    fakeDatasource.setJdbcUrl(yuanConstructorConfiguration.getJdbcUrl());
 
     return fakeDatasource;
   }
